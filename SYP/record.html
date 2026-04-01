@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Health Records</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins, sans-serif; }
+body {
+    background: radial-gradient(circle at 25% 45%, #0a2323 0%, #041116 35%, #02080a 70%, #010405 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: transparent;
+    backdrop-filter: blur(12px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-box {
+    width: 38px; height: 38px;
+    background: #2dd4bf;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: #011616; font-weight: 800; font-size: 20px;
+}
+.logo span { font-weight: 700; font-size: 22px; }
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: rgba(3, 7, 18, 0.6);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box {
+  width: 38px;
+  height: 38px;
+  background: #2dd4bf;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #011616;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #a1a1aa;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+nav a.active,
+nav a:hover {
+  color: #2dd4bf;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.chat-btn {
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.chat-btn:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+.book-btn {
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  position: relative;
+  left: 6px;
+}
+
+.book-btn:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+.account-btn {
+  padding: 10px 24px;
+  background: #2dd4bf;
+  color: #011616;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.account-btn:hover {
+  background: #14b8a6;
+}
+
+.main { padding: 120px 8% 60px; }
+
+.page-header { text-align: center; margin-bottom: 50px; }
+.page-header span { color: #2dd4bf; font-size: 14px; font-weight: 600; letter-spacing: 1px; }
+.page-header h1 { font-size: 42px; margin: 10px 0; }
+.page-header h1 em { color: #2dd4bf; font-style: normal; }
+.page-header p { color: #a1a1aa; font-size: 15px; }
+
+.layout { display: flex; gap: 30px; }
+
+.left-panel { width: 340px; flex-shrink: 0; }
+.right-panel { flex: 1; }
+
+.card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card h2 { font-size: 18px; margin-bottom: 20px; color: #2dd4bf; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; color: #a1a1aa; margin-bottom: 6px; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+}
+.form-group textarea { height: 80px; resize: none; }
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #2dd4bf;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2dd4bf;
+    color: #011616;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover { background: #1fb188; }
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.search-bar input {
+    flex: 1;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+.search-bar button {
+    padding: 10px 20px;
+    background: #2dd4bf;
+    color: #011616;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.record-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: 0.3s;
+}
+.record-card:hover { border-color: #2dd4bf; }
+
+.record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.record-header h3 { font-size: 16px; color: #2dd4bf; }
+.record-date { font-size: 12px; color: #a1a1aa; }
+
+.record-body p { font-size: 14px; color: #d1d5db; margin-bottom: 8px; }
+.record-body span { color: #a1a1aa; font-size: 13px; }
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(45,212,191,0.15);
+    color: #2dd4bf;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #a1a1aa;
+}
+.empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state p { font-size: 15px; }
+
+.success-msg {
+    background: rgba(45,212,191,0.15);
+    border: 1px solid #2dd4bf;
+    color: #2dd4bf;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    display: none;
+}
+
+.error-msg {
+    background: rgba(239,68,68,0.15);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    display: none;
+}
+
+.footer {
+    margin-top: 60px;
+    padding: 24px 8%;
+    background: #020713;
+    border-top: 1px solid #0f172a;
+    text-align: center;
+    color: #4b5563;
+    font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <div class="logo-box">M</div>
+        <span>MediCare</span>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="Front.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="prescription.html">Prescription</a></li>
+        <li><a class="active" href="record.html">Record</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons">
+      <a href="chat.html" class="chat-btn">Chat</a>
+        <a href="book.html" class="book-btn">Book</a>
+        <a href="Login.html" class="account-btn">Account</a>
+</header>
+
+<div class="main">
+    <div class="page-header">
+        <span>HEALTH MANAGEMENT</span>
+        <h1>Patient Health <em>Records</em></h1>
+        <p>View and manage your complete medical history</p>
+    </div>
+
+    <div class="layout">
+
+        <!-- LEFT: Add Record Form -->
+        <div class="left-panel">
+            <div class="card">
+                <h2>Add New Record</h2>
+                <div class="success-msg" id="successMsg">Record added successfully!</div>
+                <div class="error-msg" id="errorMsg">Something went wrong. Try again.</div>
+
+                <div class="form-group">
+                    <label>Patient ID</label>
+                    <input type="number" id="patientId" placeholder="Enter patient ID" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Doctor ID</label>
+                    <input type="number" id="doctorId" placeholder="Enter doctor ID" value="2">
+                </div>
+                <div class="form-group">
+                    <label>Diagnosis</label>
+                    <textarea id="diagnosis" placeholder="Enter diagnosis details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Prescription</label>
+                    <textarea id="prescription" placeholder="Enter prescription..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Report</label>
+                    <textarea id="report" placeholder="Enter report details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Visit Date</label>
+                    <input type="date" id="visitDate">
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="notes" placeholder="Additional notes..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="addRecord()">Add Health Record</button>
+            </div>
+        </div>
+
+        <!-- RIGHT: View Records -->
+        <div class="right-panel">
+            <div class="search-bar">
+                <input type="number" id="searchPatientId" placeholder="Enter patient ID to view records..." value="1">
+                <button onclick="loadRecords()">View Records</button>
+            </div>
+
+            <div id="recordsList">
+                <div class="empty-state">
+                    <div class="icon">📋</div>
+                    <p>Enter a patient ID and click View Records</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 MediCare. All rights reserved. Made with care for better health.</p>
+</footer>
+
+<script>
+const API = 'http://127.0.0.1:8000/api/records';
+
+function addRecord() {
+    let data = {
+        patient_id: document.getElementById('patientId').value,
+        doctor_id: document.getElementById('doctorId').value,
+        diagnosis: document.getElementById('diagnosis').value,
+        prescription: document.getElementById('prescription').value,
+        report: document.getElementById('report').value,
+        visit_date: document.getElementById('visitDate').value,
+        notes: document.getElementById('notes').value
+    };
+
+    if (!data.diagnosis || !data.visit_date) {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('errorMsg').innerText = 'Diagnosis and visit date are required!';
+        return;
+    }
+
+    fetch(`${API}/add/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(response => {
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+        document.getElementById('diagnosis').value = '';
+        document.getElementById('prescription').value = '';
+        document.getElementById('report').value = '';
+        document.getElementById('notes').value = '';
+        loadRecords();
+        setTimeout(() => {
+            document.getElementById('successMsg').style.display = 'none';
+        }, 3000);
+    })
+    .catch(() => {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('errorMsg').innerText = 'Could not connect to backend. Make sure server is running!';
+    });
+}
+
+function loadRecords() {
+    let patientId = document.getElementById('searchPatientId').value;
+    if (!patientId) return;
+
+    fetch(`${API}/patient/${patientId}/`)
+    .then(res => res.json())
+    .then(records => {
+        let container = document.getElementById('recordsList');
+        if (records.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="icon">📋</div>
+                    <p>No health records found for this patient.</p>
+                </div>`;
+            return;
+        }
+
+        let html = '';
+        records.forEach(record => {
+            html += `
+                <div class="record-card">
+                    <div class="record-header">
+                        <h3>Visit Record #${record.id}</h3>
+                        <span class="record-date">📅 ${record.visit_date}</span>
+                    </div>
+                    <div class="record-body">
+                        <span class="badge">Diagnosis</span>
+                        <p>${record.diagnosis}</p>
+                        ${record.prescription ? `<span class="badge">Prescription</span><p>${record.prescription}</p>` : ''}
+                        ${record.report ? `<span class="badge">Report</span><p>${record.report}</p>` : ''}
+                        ${record.notes ? `<span class="badge">Notes</span><p>${record.notes}</p>` : ''}
+                        <p style="margin-top:10px; font-size:12px; color:#a1a1aa;">Added on: ${new Date(record.created_at).toLocaleDateString()}</p>
+                    </div>
+                </div>`;
+        });
+        container.innerHTML = html;
+    })
+    .catch(() => {
+        document.getElementById('recordsList').innerHTML = `
+            <div class="empty-state">
+                <div class="icon">⚠️</div>
+                <p>Could not load records. Make sure backend is running!</p>
+            </div>`;
+    });
+}
+
+window.onload = function() {
+    loadRecords();
+    document.getElementById('visitDate').value = new Date().toISOString().split('T')[0];
+}
+</script>
+
+</body>
+</html>

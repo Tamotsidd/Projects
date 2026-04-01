@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Chat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+
+<!-- RADIO INPUTS -->
+<input type="radio" name="doctor" id="doc1" checked>
+<input type="radio" name="doctor" id="doc2">
+<input type="radio" name="doctor" id="doc3">
+<input type="radio" name="doctor" id="doc4">
+<input type="radio" name="doctor" id="doc5">
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <div class="logo-box">M</div>
+        <span>MediCare</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="Front.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="prescription.html">Prescription</a></li>
+            <li><a href="record.html">Record</a></li>
+        </ul>
+    </nav>
+
+    <div class="nav-buttons">
+        <a href="chat.html" class="chat-btn">Chat</a>
+        <a href="book.html" class="book-btn">Book</a>
+        <a href="Login.html" class="account-btn">Account</a>
+        
+    </div>
+</header>
+
+<div class="chat-page">
+<div class="chat-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<p class="sidebar-title">Your Doctors</p>
+
+<label class="doctor-label" for="doc1">
+<div class="doc-avatar dot-online">A</div>
+<div class="doc-info">
+<div class="name">Dr. Siddhant Tamrakar</div>
+<div class="spec">Orthopedics</div>
+</div>
+</label>
+
+<label class="doctor-label" for="doc2">
+<div class="doc-avatar dot-online">K</div>
+<div class="doc-info">
+<div class="name">Dr. Mausam Shrestha</div>
+<div class="spec">Gynecologist</div>
+</div>
+</label>
+
+<label class="doctor-label" for="doc3">
+<div class="doc-avatar dot-away">J</div>
+<div class="doc-info">
+<div class="name">Dr. Dikshya Rai</div>
+<div class="spec">Pediatrician</div>
+</div>
+</label>
+
+<label class="doctor-label" for="doc4">
+<div class="doc-avatar dot-offline">T</div>
+<div class="doc-info">
+<div class="name">Dr. Kaushal Adhikari</div>
+<div class="spec">Otolaryngologist</div>
+</div>
+</label>
+
+<label class="doctor-label" for="doc5">
+<div class="doc-avatar dot-online">P</div>
+<div class="doc-info">
+<div class="name">Dr. Ram Bahadur</div>
+<div class="spec">Neurology</div>
+</div>
+</label>
+
+</aside>
+
+<!-- CHAT PANELS -->
+<div class="chat-panels">
+
+<!-- PANEL 1 -->
+<div class="chat-panel panel-1">
+<div class="chat-header">
+<div class="chat-header-left">
+<div class="chat-doc-avatar online">A</div>
+<div class="chat-header-info">
+<div class="name">Dr. Siddhant Tamrakar</div>
+<div class="status online">● Online · Orthopedics</div>
+</div>
+</div>
+</div>
+
+<div class="messages-area">
+<div class="empty-state">
+<div class="empty-icon">💬</div>
+<p>No messages yet. Say hello!</p>
+</div>
+</div>
+
+<form class="input-area">
+<input type="text" class="msg-text-input" placeholder="Type your message…">
+<button class="send-btn">➤</button>
+</form>
+</div>
+
+<!-- PANEL 2 -->
+<div class="chat-panel panel-2">
+<div class="chat-header">
+<div class="chat-doc-avatar online">K</div>
+<div>
+<div class="name">Dr. Mausam Shrestha</div>
+<div class="status online">● Online · Gynecologist</div>
+</div>
+</div>
+
+<div class="messages-area"><div class="empty-state"><p>No messages yet</p></div></div>
+
+<form class="input-area">
+<input type="text" class="msg-text-input">
+<button class="send-btn">➤</button>
+</form>
+</div>
+
+<!-- PANEL 3 -->
+<div class="chat-panel panel-3">
+<div class="chat-header">
+<div class="chat-doc-avatar away">J</div>
+<div>
+<div class="name">Dr. Dikshya Rai</div>
+<div class="status away">◐ Away · Pediatrician</div>
+</div>
+</div>
+
+<div class="messages-area"><div class="empty-state"><p>No messages yet</p></div></div>
+
+<form class="input-area">
+<input type="text" class="msg-text-input">
+<button class="send-btn">➤</button>
+</form>
+</div>
+
+<!-- PANEL 4 -->
+<div class="chat-panel panel-4">
+<div class="chat-header">
+<div class="chat-doc-avatar offline">T</div>
+<div>
+<div class="name">Dr. Kaushal Adhikari</div>
+<div class="status offline">● Offline · Otolaryngologist</div>
+</div>
+</div>
+
+<div class="messages-area"><div class="empty-state"><p>No messages yet</p></div></div>
+
+<form class="input-area">
+<input type="text" class="msg-text-input">
+<button class="send-btn">➤</button>
+</form>
+</div>
+
+<!-- PANEL 5 -->
+<div class="chat-panel panel-5">
+<div class="chat-header">
+<div class="chat-doc-avatar online">P</div>
+<div>
+<div class="name">Dr. Ram Bahadur</div>
+<div class="status online">● Online · Neurology</div>
+</div>
+</div>
+
+<div class="messages-area"><div class="empty-state"><p>No messages yet</p></div></div>
+
+<form class="input-area">
+<input type="text" class="msg-text-input">
+<button class="send-btn">➤</button>
+</form>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col footer-brand">
+      <h2 class="footer-logo">MediCare</h2>
+      <p class="footer-text">
+        Trusted online platform for doctor appointments, cardiology care,
+        general medicine and pharmacy services.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="Front.html">Home</a></li>
+        <li><a href="book.html">Doctors</a></li>
+        <li><a href="product.html">Pharmacy</a></li>
+        <li><a href="book.html">Online Appointments</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Support</h3>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms of service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Contact</h3>
+      <ul class="footer-links">
+        <li><a href="#">support@medicare.com</a></li>
+        <li><a href="#">+977-9812345678</a></li>
+        <li><span>Damak, Koshi, Nepal</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MediCare. All rights reserved.</p>
+    <p>Made with care for better health.</p>
+  </div>
+</footer>
+
+
+<!-- SCRIPT -->
+<script>
+document.querySelectorAll('.input-area').forEach(function(form) {
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+
+let input = form.querySelector('.msg-text-input');
+let text = input.value.trim();
+if (!text) return;
+
+let area = form.closest('.chat-panel').querySelector('.messages-area');
+
+let empty = area.querySelector('.empty-state');
+if (empty) empty.remove();
+
+let now = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+let row = document.createElement('div');
+row.className = 'msg-row sent';
+
+row.innerHTML =
+'<div class="msg-avatar">Y</div>' +
+'<div><div class="bubble">'+text+'</div>' +
+'<div class="msg-meta">'+now+' · Sent ✓</div></div>';
+
+area.appendChild(row);
+
+input.value='';
+area.scrollTop = area.scrollHeight;
+});
+});
+</script>
+
+</body>
+</html>

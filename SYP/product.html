@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediCare Products</title>
+<link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+<!-- Floating Cart Button -->
+<div class="floating-cart" id="cart-btn">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Cart Popup -->
+<div class="cart-popup" id="cart-popup">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <span id="close-cart">✖</span>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div class="cart-footer">
+    <h4>Total: <span id="cart-total">0.00</span></h4>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+<!-- Navbar -->
+  <header class="navbar">
+      <div class="logo">
+          <div class="logo-box">M</div>
+          <span>MediCare</span>
+      </div>
+
+      <nav>
+          <ul>
+              <li><a href="Front.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a class="active"  href="product.html">Products</a></li>
+               <li><a href="prescription.html">Prescription</a></li>
+              <li><a href="record.html">Record</a></li>
+          </ul>
+      </nav>
+
+      <div class="nav-buttons">
+      <a href="chat.html" class="chat-btn">Chat</a>
+        <a href="book.html" class="book-btn">Book</a>
+        <a href="Login.html" class="account-btn">Account</a>
+        
+    </div>
+  </header>
+
+<!-- Hero -->
+<section class="hero">
+  <h4>ONLINE PHARMACY</h4>
+  <h1>Shop <span>Medicines</span></h1>
+  <p>Browse our trusted medicines and health essentials</p>
+
+  <input type="text" id="searchInput" placeholder="Search medicines...">
+</section>
+
+<!-- Categories -->
+<div class="categories">
+  <button class="active">All</button>
+  <button>Pain Relief</button>
+  <button>Cold & Flu</button>
+  <button>Vitamins</button>
+  <button>Digestive</button>
+  <button>First Aid</button>
+</div>
+
+<!-- Products -->
+
+<section class="products">
+
+  <!-- Pain Relief -->
+  <div class="card" data-category="pain">
+    <img src="images/Tablets.png">
+    <h3>Paracetamol 500mg</h3>
+    <p>Pain relief from fever</p>
+    <span class="price">Rs. 100.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="pain">
+    <img src="images/Tablets.png">
+    <h3>Ibuprofen 200mg</h3>
+    <p>Anti-inflammatory medicine</p>
+    <span class="price">Rs. 90.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="pain">
+    <img src="images/Tablets.png">
+    <h3>Aspirin</h3>
+    <p>Pain & heart protection</p>
+    <span class="price">Rs. 150.00</span>
+    <button>Add</button>
+  </div>
+
+  <!-- Vitamins -->
+  <div class="card" data-category="vitamin" > 
+    <img src="images/Vitamin C.png">
+    <h3>Vitamin C 1000mg</h3>
+    <p>Boost immunity</p>
+    <span class="price">Rs. 55.55</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="vitamin">
+    <img src="images/Tablets.png">
+    <h3>Multivitamin Tablets</h3>
+    <p>Daily health supplement</p>
+    <span class="price">Rs. 348.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="vitamin">
+    <img src="images/vitamin-d.png">
+    <h3>Vitamin D Capsules</h3>
+    <p>Supports bone health</p>
+    <span class="price">Rs. 1650.67</span>
+    <button>Add</button>
+  </div>
+
+  <!-- Cold & Flu -->
+  <div class="card" data-category="cold">
+   <img src="images/Cough syrup.png">
+    <h3>Cough Syrup</h3>
+    <p>Relieves dry cough</p>
+    <span class="price">Rs. 150.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="cold">
+    <img src="images/cold.png">
+    <h3>Cold Relief Tablets</h3>
+    <p>Fast relief from cold</p>
+    <span class="price">Rs. 368.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="cold">
+    <img src="images/nasal spray.png">
+    <h3>Nasal Spray</h3>
+    <p>Clears blocked nose</p>
+    <span class="price">Rs. 768.00</span>
+    <button>Add</button>
+  </div>
+
+  <!-- Digestive -->
+  <div class="card" data-category="digestive">
+    <img src="images/Tablets.png">
+    <h3>Antacid Tablets</h3>
+    <p>Relieves acidity</p>
+    <span class="price">Rs. 90.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="digestive">
+    <img src="images/digestive.png">
+    <h3>Digestive Enzymes</h3>
+    <p>Improves digestion</p>
+    <span class="price">Rs. 1180.00</span>
+    <button>Add</button>
+  </div>
+ 
+  <div class="card" >
+    <img src="images/syrup.png">
+    <h3>Laxative Syrup</h3>
+    <p>Relieves constipation</p>
+    <span class="price">Rs. 760.00</span>
+    <button>Add</button>
+  </div>
+
+  <!-- First Aid -->
+  <div class="card" data-category="firstaid">
+    <img src="images/bandage.png">
+    <h3>Bandage Kit</h3>
+    <p>First aid essentials</p>
+    <span class="price">RS. 880.88 </span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="firstaid">
+    <img src="images/antiseptic.png">
+    <h3>Antiseptic Cream</h3>
+    <p>Heals cuts & wounds</p>
+    <span class="price">RS. 90.99</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card" data-category="firstaid">
+    <img src="images/gloves.png">
+    <h3>Medical Gloves</h3>
+    <p>Hygiene protection</p>
+    <span class="price">Rs. 799.99</span>
+    <button>Add</button>
+  </div>
+
+  <!-- Other -->
+  <div class="card">
+    <img src="images/insulin.png">
+    <h3>Insulin</h3>
+    <p>Diabetes control</p>
+    <span class="price">Rs. 700.00</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card">
+    <img src="images/blood pressure.png">
+    <h3>Blood Pressure Monitor</h3>
+    <p>Track your BP</p>
+    <span class="price">Rs. 4500.99</span>
+    <button>Add</button>
+  </div>
+
+  <div class="card">
+    <img src="images/thermometer.png">
+    <h3>Thermometer</h3>
+    <p>Check body temperature</p>
+    <span class="price">Rs. 366.67</span>
+    <button>Add</button>
+  </div>
+
+</section>
+
+
+<script>
+// SEARCH
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", function() {
+  const value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    const desc = card.querySelector("p").textContent.toLowerCase();
+
+    if (title.includes(value) || desc.includes(value)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+
+// CATEGORY FILTER
+const categoryButtons = document.querySelectorAll(".categories button");
+
+categoryButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    categoryButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const category = btn.textContent.toLowerCase();
+
+    cards.forEach(card => {
+      const cardCategory = card.getAttribute("data-category");
+
+      if (category === "all") {
+        card.style.display = "block";
+      } 
+      else if (
+        (category === "pain relief" && cardCategory === "pain") ||
+        (category === "cold & flu" && cardCategory === "cold") ||
+        (category === "vitamins" && cardCategory === "vitamin") ||
+        (category === "digestive" && cardCategory === "digestive") ||
+        (category === "first aid" && cardCategory === "firstaid")
+      ) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+  });
+});
+let cart = [];
+
+const cartBtn = document.getElementById("cart-btn");
+const cartPopup = document.getElementById("cart-popup");
+const closeCart = document.getElementById("close-cart");
+const cartItemsDiv = document.getElementById("cart-items");
+const cartCount = document.getElementById("cart-count");
+const cartTotal = document.getElementById("cart-total");
+
+// Toggle with animation
+cartBtn.onclick = () => {
+  cartPopup.classList.toggle("active");
+};
+
+closeCart.onclick = () => {
+  cartPopup.classList.remove("active");
+};
+
+// Add to cart
+document.querySelectorAll(".card button").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const card = this.parentElement;
+    const name = card.querySelector("h3").textContent;
+    const priceText = card.querySelector(".price").textContent;
+const price = parseFloat(priceText.replace(/Rs\.|\s/g, ''));
+    const img = card.querySelector("img").src;
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, img, qty: 1 });
+    }
+
+    updateCart();
+  });
+});
+
+function updateCart() {
+  cartItemsDiv.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += Math.round((item.price * item.qty + Number.EPSILON) * 100) / 100;
+
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+
+    div.innerHTML = `
+      <div class="cart-info">
+        <img src="${item.img}">
+        <span>${item.name}</span>
+      </div>
+      <div class="cart-item-controls">
+        <button onclick="decrease(${index})">-</button>
+        ${item.qty}
+        <button onclick="increase(${index})">+</button>
+      </div>
+    `;
+
+    cartItemsDiv.appendChild(div);
+  });
+
+  cartCount.textContent = cart.length;
+  cartTotal.textContent = "Rs." + total.toFixed(2);  
+}
+
+// Increase
+function increase(index) {
+  cart[index].qty++;
+  updateCart();
+}
+
+// Decrease
+function decrease(index) {
+  cart[index].qty--;
+
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCart();
+}
+
+</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col footer-brand">
+      <h2 class="footer-logo">MediCare</h2>
+      <p class="footer-text">
+        Trusted online platform for doctor appointments, cardiology care,
+        general medicine and pharmacy services. 
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="Front.html">Home</a></li>
+        <li><a href="book.html">Doctors</a></li>
+        <li><a href="product.html">Pharmacy</a></li>
+        <li><a href="book.html">Online Appointments</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Support</h3>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms of service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Contact</h3>
+      <ul class="footer-links">
+        <li><a href="#">support@medicare.com</a></li>
+        <li><a href="#">+977-9812345678</a></li>
+        <li><span>Damak, Koshi, Nepal</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MediCare. All rights reserved.</p>
+    <p>Made with care for better health.</p>
+  </div>
+</footer>
+
+</body>
+</html>

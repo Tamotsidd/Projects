@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - MediCare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Login.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <div class="logo-box">M</div>
+      <span>MediCare</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="front.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="prescription.html">Prescription</a></li>
+        <li><a href="record.html">Record</a></li>
+      </ul>
+    </nav>
+    <div class="nav-buttons">
+      <a href="chat.html" class="chat-btn">Chat</a>
+      <a href="book.html" class="book-btn">Book</a>
+      <a href="Login.html" class="account-btn">Account</a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="page-main">
+    <div class="wrapper">
+
+      <!-- TOGGLE (checkbox trick) -->
+      <input type="checkbox" id="toggle" hidden>
+
+      <!-- ── LOGIN FORM ── -->
+      <form class="form login" id="loginForm">
+        <h1>Login</h1>
+
+        <div class="error-box" id="loginError"></div>
+        <div class="success-box" id="loginSuccess"></div>
+
+        <div class="input-box">
+          <input type="text" id="loginPhone" placeholder="Phone Number" required />
+          <i class="bx bx-phone"></i>
+        </div>
+
+        <div class="input-box">
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <i class="bx bx-lock"></i>
+        </div>
+
+        <div class="remember-forgot">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn" id="loginBtn">Login</button>
+
+        <div class="register-link">
+          <p>Don't have an account?
+            <label for="toggle">Register</label>
+          </p>
+        </div>
+      </form>
+
+      <!-- ── REGISTER FORM ── -->
+      <form class="form register" id="registerForm">
+        <h1>Register</h1>
+
+        <div class="error-box" id="registerError"></div>
+        <div class="success-box" id="registerSuccess"></div>
+
+        <!-- Full Name -->
+        <div class="input-box">
+          <input type="text" id="registerName" placeholder="Full Name" required />
+          <i class="bx bx-user"></i>
+        </div>
+
+        <!-- Phone -->
+        <div class="input-box">
+          <input type="text" id="registerPhone" placeholder="Phone Number" required />
+          <i class="bx bx-phone"></i>
+        </div>
+
+        <!-- Email (optional) -->
+        <div class="input-box">
+          <input type="email" id="registerEmail" placeholder="Email (optional)" />
+          <i class="bx bx-envelope"></i>
+        </div>
+
+        <!-- Role -->
+        <div class="input-box select-box">
+          <select id="registerRole" required>
+            <option value="" disabled selected>Select Role</option>
+            <option value="patient">Patient</option>
+            <option value="doctor">Doctor</option>
+          </select>
+          <i class="bx bx-id-card"></i>
+        </div>
+
+        <!-- ── Doctor fields (hidden by default, shown when Doctor is selected) ── -->
+        <div id="doctorFields" style="display:none;">
+
+          <div class="input-box">
+            <input type="text" id="registerSpecialization" placeholder="Specialization (e.g. Cardiology)" />
+            <i class="bx bx-plus-medical"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="text" id="registerLicense" placeholder="License Number (e.g. NMC-12345)" />
+            <i class="bx bx-certification"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="number" id="registerExperience" placeholder="Years of Experience" min="0" />
+            <i class="bx bx-time"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="text" id="registerAvailableDays" placeholder="Available Days (e.g. Mon, Wed, Fri)" />
+            <i class="bx bx-calendar"></i>
+          </div>
+
+        </div>
+
+        <!-- Password -->
+        <div class="input-box">
+          <input type="password" id="registerPassword" placeholder="Password" required />
+          <i class="bx bx-lock"></i>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-box">
+          <input type="password" id="registerConfirm" placeholder="Confirm Password" required />
+          <i class="bx bx-lock-alt"></i>
+        </div>
+
+        <button type="submit" class="btn" id="registerBtn">Register</button>
+
+        <div class="register-link">
+          <p>Already have an account?
+            <label for="toggle">Login</label>
+          </p>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <h2 class="footer-logo">MediCare</h2>
+        <p class="footer-text">
+          Trusted online platform for doctor appointments, cardiology care,
+          general medicine and pharmacy services.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#pharmacy">Pharmacy</a></li>
+          <li><a href="#appointments">Online Appointments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms of service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Contact</h3>
+        <ul class="footer-links">
+          <li><a href="mailto:support@medicare.com">support@medicare.com</a></li>
+          <li><a href="tel:+9779800000000">+977-98XXXXXXX</a></li>
+          <li><span>Damak, Koshi, Nepal</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MediCare. All rights reserved.</p>
+      <p>Made with care for better health.</p>
+    </div>
+  </footer>
+
+  <script src="login.js"></script>
+</body>
+</html>

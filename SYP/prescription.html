@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prescription Page</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="prescription.css">
+</head>
+<body>
+  <header class="navbar">
+      <div class="logo">
+          <div class="logo-box">M</div>
+          <span>MediCare</span>
+      </div>
+
+      <nav>
+          <ul>
+              <li><a href="Front.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a class="active" href="prescription.html">Prescription</a></li>
+        <li><a href="record.html">Record</a></li>
+          </ul>
+      </nav>
+
+      <div class="nav-buttons">
+      <a href="chat.html" class="chat-btn">Chat</a>
+        <a href="book.html" class="book-btn">Book</a>
+        <a href="Login.html" class="account-btn">Account</a>
+        
+    </div>
+  </header>
+    <header class="header">
+  <div>
+    <h1>📋 Prescriptions</h1>
+    <p>Create and manage digital prescriptions</p>
+  </div>
+
+  <div class="top-actions">
+    <div class="toggle-buttons">
+      <button id="patientBtn" class="active">Patient</button>
+      <button id="doctorBtn">Doctor</button>
+    </div>
+
+    <button class="new-btn" id="newBtn">+ New Prescription</button>
+  </div>
+  
+</header>
+<main>
+  
+
+  <!-- Doctor View -->
+  <div id="doctorView" class="hidden">
+    <div class="form-section">
+      <h2>Create New Prescription</h2>
+      <form id="prescriptionForm">
+        <div class="form-group">
+          <label>Patient Name *</label>
+          <input type="text" id="patientName" placeholder="e.g. Mausam Shrestha" required />
+        </div>
+        <div class="form-group">
+          <label>Prescribing Doctor *</label>
+          <input type="text" id="doctorName" placeholder="e.g. Dr. Siddhant Tamrakar" required />
+        </div>
+        <div class="form-group">
+          <label>Medication *</label>
+          <input type="text" id="medication" placeholder="e.g. Paracetamol 500mg" required />
+        </div>
+        <div class="form-group">
+          <label>Dosage *</label>
+          <input type="text" id="dosage" placeholder="e.g. 3 tablet" required />
+        </div>
+        <div class="form-group">
+          <label>Frequency *</label>
+          <input type="text" id="frequency" placeholder="e.g. Twice daily" required />
+        </div>
+        <div class="form-group">
+          <label>Duration *</label>
+          <input type="text" id="duration" placeholder="e.g. 7 days" required />
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="notes" rows="3" placeholder="Additional instructions..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="reset" class="cancel-btn">Cancel</button>
+          <button type="submit" class="create-btn">Create Prescription</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Doctor prescriptions list -->
+    <div id="doctorPrescriptions"></div>
+  </div>
+
+  <!-- Patient View -->
+  <div id="patientView">
+  <div id="emptyPatient" class="empty">
+    <p>No prescriptions yet</p>
+  </div>
+
+  <div id="patientPrescriptions"></div>
+</div>
+  <!-- JavaScript -->
+  <script>
+    const patientPrescriptions = document.getElementById("patientPrescriptions");
+const emptyPatient = document.getElementById("emptyPatient");
+    const patientBtn = document.getElementById("patientBtn");
+const doctorBtn = document.getElementById("doctorBtn");
+const patientView = document.getElementById("patientView");
+const doctorView = document.getElementById("doctorView");
+const form = document.getElementById("prescriptionForm");
+const doctorPrescriptions = document.getElementById("doctorPrescriptions");
+
+const newBtn = document.getElementById("newBtn");
+const formSection = document.querySelector(".form-section");
+function loadPrescriptions() {
+  const prescriptions = JSON.parse(localStorage.getItem("prescriptions")) || [];
+
+  prescriptions.forEach(data => {
+    createPrescriptionCard(data);
+  });
+
+  if (prescriptions.length > 0) {
+    emptyPatient.style.display = "none";
+  }
+}
+
+function createPrescriptionCard(data) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  card.innerHTML = `
+    <h3>${data.medication} <span class="status">active</span></h3>
+    <p><strong>Patient:</strong> ${data.patientName}</p>
+    <p><strong>Dosage:</strong> ${data.dosage}</p>
+    <p><strong>Frequency:</strong> ${data.frequency}</p>
+    <p><strong>Duration:</strong> ${data.duration}</p>
+    ${data.notes ? `<p><strong>Notes:</strong> ${data.notes}</p>` : ""}
+    <p class="doctor"><strong>Prescribing Doctor:</strong> ${data.doctorName}</p>
+    <p class="date">${data.date}</p>
+
+    <div class="actions">
+      <button class="delete-btn">Delete</button>
+    </div>
+  `;
+
+  const patientCard = card.cloneNode(true);
+  patientCard.querySelector(".actions").remove();
+
+  doctorPrescriptions.appendChild(card);
+  patientPrescriptions.appendChild(patientCard);
+
+  const deleteBtn = card.querySelector(".delete-btn");
+
+  deleteBtn.addEventListener("click", () => {
+    card.remove();
+    patientCard.remove();
+
+    let prescriptions = JSON.parse(localStorage.getItem("prescriptions")) || [];
+    prescriptions = prescriptions.filter(p => p.id !== data.id);
+    localStorage.setItem("prescriptions", JSON.stringify(prescriptions));
+
+    if (patientPrescriptions.children.length === 0) {
+      emptyPatient.style.display = "block";
+    }
+  });
+}
+// Hide initially
+newBtn.style.display = "none";
+
+
+// Toggle views
+patientBtn.addEventListener("click", () => {
+  patientView.classList.remove("hidden");
+  doctorView.classList.add("hidden");
+  patientBtn.classList.add("active");
+  doctorBtn.classList.remove("active");
+
+  newBtn.style.display = "none";
+  formSection.style.display = "none";
+});
+
+doctorBtn.addEventListener("click", () => {
+  doctorView.classList.remove("hidden");
+  patientView.classList.add("hidden");
+
+  doctorBtn.classList.add("active");
+  patientBtn.classList.remove("active");
+
+  newBtn.style.display = "inline-block";
+
+  formSection.style.display = "block";
+});
+
+// Toggle form
+newBtn.addEventListener("click", () => {
+  formSection.style.display = "block";
+});
+
+// Handle form
+
+ form.addEventListener("submit", (e) => {
+  e.preventDefault(); // ✅ IMPORTANT
+
+  // ✅ GET VALUES FROM INPUTS
+  const patientName = document.getElementById("patientName").value;
+  const doctorName = document.getElementById("doctorName").value;
+  const medication = document.getElementById("medication").value;
+  const dosage = document.getElementById("dosage").value;
+  const frequency = document.getElementById("frequency").value;
+  const duration = document.getElementById("duration").value;
+  const notes = document.getElementById("notes").value;
+
+  // ✅ CREATE DATA OBJECT
+  const prescriptionData = {
+    id: Date.now(),
+    patientName,
+    doctorName,
+    medication,
+    dosage,
+    frequency,
+    duration,
+    notes,
+    date: new Date().toLocaleDateString()
+  };
+
+  // ✅ SAVE TO STORAGE
+  let prescriptions = JSON.parse(localStorage.getItem("prescriptions")) || [];
+  prescriptions.push(prescriptionData);
+  localStorage.setItem("prescriptions", JSON.stringify(prescriptions));
+
+  // ✅ CREATE UI CARD 
+  createPrescriptionCard(prescriptionData);
+
+  // ✅ UI CLEANUP
+  emptyPatient.style.display = "none";
+  form.reset();
+  formSection.style.display = "none";
+});
+
+loadPrescriptions();
+  </script>
+  </main>
+  
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-col footer-brand">
+      <h2 class="footer-logo">MediCare</h2>
+      <p class="footer-text">
+        Trusted online platform for doctor appointments, cardiology care,
+        general medicine and pharmacy services.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="Front.html">Home</a></li>
+        <li><a href="book.html">Doctors</a></li>
+        <li><a href="progoy duct.html">Pharmacy</a></li>
+        <li><a href="book.html">Online Appointments</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Support</h3>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms of service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Contact</h3>
+      <ul class="footer-links">
+        <li><a href="#">support@medicare.com</a></li>
+        <li><a href="#">+977-9812345678</a></li>
+        <li><span>Damak, Koshi, Nepal</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MediCare. All rights reserved.</p>
+    <p>Made with care for better health.</p>
+  </div>
+
+</footer>
+</body>
+</html>

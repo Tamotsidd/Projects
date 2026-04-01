@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: radial-gradient(
+        circle at 25% 45%,
+        #0a2323 0%, 
+        #041116 35%,
+        #02080a 70%,
+        #010405 100%
+    );
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: transparent;
+    backdrop-filter: blur(12px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    width: 38px;
+    height: 38px;
+    background: #2dd4bf;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #011616;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.logo span {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #a1a1aa;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav a.active,
+nav a:hover {
+    color: #2dd4bf;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.active {
+    color: #2dd4bf;
+}
+
+.book-btn {
+    padding: 10px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.chat-btn {
+    padding: 10px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    position: relative;
+    right: 10px;
+}
+
+.account-btn {
+    padding: 10px 24px;
+    background: #2dd4bf;
+    color: #011616;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.chat-btn:hover {
+    border-color: #2dd4bf;
+}
+
+.book-btn:hover {
+    border-color:#2dd4bf;
+}
+
+.texts {
+    text-align: center;
+    margin-top: 140px;
+    text-shadow: 0 0 30px rgba(45, 212, 191, 0.25);
+    margin-bottom: 60px;
+}
+
+.paragraph {
+    font-size: 16px;
+    color: #2dd4bf;
+    margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(45, 212, 191, 0.25);
+    font-family: sans-serif;
+}
+
+.texts h1 {
+    font-size: 50px;
+    font-weight: 700;
+    font-style: sans-serif;
+}
+
+.highlight {
+    color: #2dd4bf;
+    text-shadow: 0 0 30px rgba(45, 212, 191, 0.25);
+}
+
+.line {
+    color: #a1a1aa;
+    font-size: 15px;
+    margin-top: 12px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------- */
+.contact-wrapper {
+    display: flex;
+    gap: 60px;
+    width: 80%;
+    margin: auto;
+    color: white;
+    margin-top: 60px;
+}
+
+/* LEFT SIDE */
+.contact-info {
+    flex: 1;
+    margin-top: 50px;
+    position: relative;
+    left: 90px;
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(0, 255, 170, 0.1);
+    color: #27d3a2;
+    font-size: 18px;
+}
+
+.info-item h4 {
+    margin: 0;
+}
+
+.info-item p {
+    margin: 2px 0 0 0;
+}
+
+/* RIGHT SIDE */
+.contact-form {
+    flex: 1;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: white;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #29c39b;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1fb188;
+}
+
+
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 0 18px;
+  background: #020713;          /* dark, close to cards */
+  border-top: 1px solid #0f172a;
+  color: #9ca3af;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer-col {
+  font-size: 0.8rem;
+}
+
+.footer-logo {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #e5f4f0;
+}
+
+.footer-text {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.footer-heading {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  color: #e5f4f0;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-links a,
+.footer-links span {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #14b8a6;               /* same accent as cards */
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 20px;
+  border-top: 1px solid #0f172a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.72rem;
+  color: #4b5563;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        width: 90%;
+        gap: 30px;
+    }
+    .texts h1 {
+        font-size: 36px;
+    }
+}

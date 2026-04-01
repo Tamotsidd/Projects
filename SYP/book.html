@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="book.css">
+    <title>MediCare Booking</title>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <div class="logo-box">M</div>
+        <span>MediCare</span>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="Front.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="prescription.html">Prescription</a></li>
+            <li><a href="record.html">Record</a></li>
+        </ul>
+    </nav>
+    <div class="nav-buttons">
+        <a href="chat.html" class="chat-btn">Chat</a>
+        <a href="book.html" class="book-btn">Book</a>
+        <a href="Login.html" class="account-btn">Account</a>
+    </div>
+</header>
+
+<div class="main-page">
+    <div class="top">
+        <p>SCHEDULE A VISIT</p>
+        <h1>Book an <span class="appointment">Appointment</span></h1>
+        <p class="subtitle">Choose your doctor, pick a time and we'll take care of the rest.</p>
+    </div>
+
+    <input type="radio" name="step-flow" id="step1-trigger" checked hidden>
+    <input type="radio" name="step-flow" id="step2-trigger" hidden>
+    <input type="radio" name="step-flow" id="step3-trigger" hidden>
+
+    <div class="step-indicator-bar">
+        <div class="step-item" id="ind1">
+            <div class="step-icon">🩺</div>
+            <p>Select Doctor</p>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" id="ind2">
+            <div class="step-icon">📅</div>
+            <p>Select Date & Time</p>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" id="ind3">
+            <div class="step-icon">👤</div>
+            <p>Personal details</p>
+        </div>
+    </div>
+
+    <form class="booking-container">
+
+        <!-- STEP 1 — Doctor cards loaded from API -->
+        <div class="step-section" id="section1">
+            <h2 class="section-title">Choose Your Doctor</h2>
+            <div class="doctor-grid">
+                <p style="color:#aaa;padding:20px;">Loading doctors...</p>
+            </div>
+            <div class="actions">
+                <p class="notice">Select a doctor to continue</p>
+                <label for="step2-trigger" class="continue-btn disabled-state">Continue</label>
+            </div>
+        </div>
+
+        <!-- STEP 2 — Date & Time -->
+        <div class="step-section" id="section2">
+            <h2 class="section-title">Pick Date & Time</h2>
+            <div class="datetime-layout">
+                <div class="date-picker-box">
+                    <label class="input-label">📅 Select Date</label>
+                    <div id="selected-date-display" class="selected-date-display">No date selected</div>
+                    <div class="calendar-scroll" id="calendar-scroll"></div>
+                </div>
+                <div class="time-picker-box">
+                    <label class="input-label">🕒 Select Time</label>
+                    <div class="time-grid">
+                        <p style="color:#aaa;font-size:13px;">Select a date first</p>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <label for="step1-trigger" class="back-btn">Back</label>
+                <label for="step3-trigger" class="continue-btn">Continue</label>
+            </div>
+        </div>
+
+        <!-- STEP 3 — Personal Details -->
+        <div class="step-section" id="section3">
+            <h2 class="section-title">Your Details</h2>
+            <div class="details-layout">
+                <div class="form-inputs">
+                    <label class="input-label">👤 Full Name</label>
+                    <input type="text" placeholder="John Doe" class="main-input" required>
+                    <label class="input-label">📧 Email</label>
+                    <input type="email" placeholder="john@example.com" class="main-input" required>
+                    <label class="input-label">📞 Phone Number</label>
+                    <input type="text" placeholder="+977 9812345678" class="main-input" required>
+                </div>
+                <div class="summary-card">
+                    <h3>Appointment Summary</h3>
+                    <p style="color:#aaa;font-size:13px;margin-top:10px;">
+                        Your selections will appear here.
+                    </p>
+                </div>
+            </div>
+            <div class="actions">
+                <label for="step2-trigger" class="back-btn">Back</label>
+                <button type="submit" class="continue-btn">Confirm Appointment</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- Calendar Script (your teammate's original) -->
+<script>
+const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+function getDaysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
+function getFirstDay(year, month) {
+    return new Date(year, month, 1).getDay();
+}
+
+function buildCalendar() {
+    const container = document.getElementById('calendar-scroll');
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    for (let m = 0; m < 12; m++) {
+        const monthDiv = document.createElement('div');
+        monthDiv.className = 'cal-month';
+
+        const header = document.createElement('div');
+        header.className = 'cal-month-header';
+        header.textContent = monthNames[m] + ' ' + currentYear;
+        monthDiv.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'calendar-grid';
+
+        dayNames.forEach(d => {
+            const dn = document.createElement('div');
+            dn.className = 'day-name';
+            dn.textContent = d;
+            grid.appendChild(dn);
+        });
+
+        const firstDay = getFirstDay(currentYear, m);
+        for (let e = 0; e < firstDay; e++) {
+            const empty = document.createElement('div');
+            empty.className = 'day-empty';
+            grid.appendChild(empty);
+        }
+
+        const daysInMonth = getDaysInMonth(currentYear, m);
+        for (let d = 1; d <= daysInMonth; d++) {
+            const label = document.createElement('label');
+            label.className = 'day-cell';
+
+            const cellDate = new Date(currentYear, m, d);
+            const isPast = cellDate < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            if (isPast) label.classList.add('day-past');
+
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'day';
+            radio.value = monthNames[m] + ' ' + d + ', ' + currentYear;
+            radio.hidden = true;
+            if (isPast) radio.disabled = true;
+
+            radio.addEventListener('change', function() {
+                document.getElementById('selected-date-display').textContent = this.value;
+            });
+
+            const span = document.createElement('span');
+            span.textContent = d;
+
+            label.appendChild(radio);
+            label.appendChild(span);
+            grid.appendChild(label);
+        }
+
+        monthDiv.appendChild(grid);
+        container.appendChild(monthDiv);
+    }
+}
+
+buildCalendar();
+</script>
+
+<!-- API connection script -->
+<script src="book.js"></script>
+
+</body>
+</html>
